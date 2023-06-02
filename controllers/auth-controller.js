@@ -25,7 +25,7 @@ const signup = asyncHandler(async (req, res, next) => {
 		gender,
 		username,
 		password,
-		role: 'user'
+		role: 'blogger'
 	});
 
 	req.session.userId = user._id;
@@ -98,7 +98,7 @@ const restrictTo = (...roles) => {
 };
 
 const logout = (req, res, next) => {
-	req.session.destroy(err => {
+	req.session.destroy((err) => {
 		if (!!err) return next(err);
 	});
 

@@ -54,6 +54,7 @@ const editUserAccount = asyncHandler(async (req, res, next) => {
 	}
 
 	const avatar = await resizeUserAvatar(userId, req.file);
+
 	if (!!avatar && user.avatar !== 'user-default-avatar.jpeg') {
 		await access(
 			join(__dirname, `../public/images/users/avatars/${user.avatar}`),
@@ -98,7 +99,7 @@ const deleteUserAccount = asyncHandler(async (req, res, next) => {
 	}
 
 	// remove session
-	req.session.destroy(err => {
+	req.session.destroy((err) => {
 		if (!!err) return next(err);
 	});
 

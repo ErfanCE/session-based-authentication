@@ -1,4 +1,4 @@
-const asyncHandler = asyncController => (req, res, next) => {
+const asyncHandler = (asyncController) => (req, res, next) => {
 	return asyncController(req, res, next).catch(next);
 };
 
